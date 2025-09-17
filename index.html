@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe Dynamique</title>
+    <link rel="stylesheet" href="/css/steps.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Step 0 – Bienvenue -->
+        <div id="step-0" class="step active">
+            <h1>Bienvenue sur Tic Tac Toe Dynamique !</h1>
+            <p class="text-muted">
+                Créez votre propre expérience de jeu personnalisée
+            </p>
+            <button id="start-btn" class="btn">Commencer</button>
+        </div>
+
+        <!-- Step 1 – Joueur 1 -->
+        <div id="step-1" class="step">
+            <h2>Configuration Joueur 1</h2>
+            
+            <div class="form-group">
+                <label for="player1-name">Nom du joueur 1</label>
+                <input type="text" id="player1-name" placeholder="Entrez votre nom" maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label>Choisissez votre symbole</label>
+                <div class="symbol-selector" id="player1-symbols">
+                    <div class="symbol-option selected" data-symbol="X">X</div>
+                    <div class="symbol-option" data-symbol="O">O</div>
+                    <div class="symbol-option" data-symbol="★">★</div>
+                    <div class="symbol-option" data-symbol="♦">♦</div>
+                    <div class="symbol-option" data-symbol="♠">♠</div>
+                </div>
+            </div>
+
+            <button id="next-1" class="btn">Suivant</button>
+        </div>
+
+        <!-- Step 2 – Joueur 2 -->
+        <div id="step-2" class="step">
+            <h2>Configuration Joueur 2</h2>
+            
+            <div class="form-group">
+                <label for="player2-name">Nom du joueur 2</label>
+                <input type="text" id="player2-name" placeholder="Entrez votre nom" maxlength="20">
+            </div>
+
+            <div class="form-group">
+                <label>Choisissez votre symbole</label>
+                <div class="symbol-selector" id="player2-symbols">
+                    <div class="symbol-option selected" data-symbol="O">O</div>
+                    <div class="symbol-option" data-symbol="★">★</div>
+                    <div class="symbol-option" data-symbol="♦">♦</div>
+                    <div class="symbol-option" data-symbol="♠">♠</div>
+                    <div class="symbol-option" data-symbol="♥">♥</div>
+                </div>
+            </div>
+
+            <button id="next-2" class="btn">Suivant</button>
+        </div>
+
+        <!-- Step 3 – Paramètres -->
+        <div id="step-3" class="step">
+            <h2>Paramètres du jeu</h2>
+            
+            <div class="form-group">
+                <label for="grid-size">Taille de la grille (n × n)</label>
+                <select id="grid-size">
+                    <option value="3">3 × 3 (Classique)</option>
+                    <option value="4">4 × 4</option>
+                    <option value="5">5 × 5</option>
+                    <option value="6">6 × 6</option>
+                    <option value="7">7 × 7</option>
+                    <option value="8">8 × 8</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="win-condition">Nombre d'alignements pour gagner (k)</label>
+                <input type="number" id="win-condition" min="3" max="8" value="3">
+            </div>
+
+            <div class="form-group">
+                <label for="match-count">Nombre de parties</label>
+                <select id="match-count">
+                    <option value="1">1 partie</option>
+                    <option value="3">Meilleur de 3</option>
+                    <option value="5">Meilleur de 5</option>
+                    <option value="7">Meilleur de 7</option>
+                </select>
+            </div>
+
+            <button id="start-game" class="btn btn-secondary">Démarrer le jeu</button>
+        </div>
+
+         <!-- Step 4 – Jeu -->
+        <div id="step-4" class="step">
+            <!-- Menu Burger -->
+            <div class="burger-menu">
+                <button class="burger-btn" id="burger-btn">
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                    <div class="burger-line"></div>
+                </button>
+                <div class="burger-panel" id="burger-panel">
+                    <button id="restart-match" class="btn">Nouvelle partie</button>
+                    <button id="restart-game" class="btn">Nouveau jeu</button>
+                    <button id="back-to-settings" class="btn">Paramètres</button>
+                </div>
+            </div>
+
+            <!-- Layout principal -->
+            <div class="game-layout">
+                <!-- Infos Joueur 2 (à gauche) -->
+                <div class="player-info" id="player2-info">
+                    <h3 id="player2-display">Joueur 2</h3>
+                    <div class="player-symbol" id="player2-symbol-display">O</div>
+                    <div class="player-score" id="score2">0</div>
+                    <div class="player-status inactive" id="player2-status">En attente</div>
+                </div>
+
+                <!-- Centre : Grille et infos de partie -->
+                <div class="game-center">
+                    <div class="match-info">
+                        Partie <span id="current-match">1</span> sur <span id="total-matches">1</span>
+                    </div>
+
+                    <div id="board" class="grid-3x3">
+                        <!-- Les cellules seront générées dynamiquement -->
+                    </div>
+
+                    <div class="game-message" id="game-message">
+                        Au tour de <span id="current-player-name">Joueur 1</span>
+                    </div>
+                </div>
+
+                <!-- Infos Joueur 1 (à droite) -->
+                <div class="player-info" id="player1-info">
+                    <h3 id="player1-display">Joueur 1</h3>
+                    <div class="player-symbol" id="player1-symbol-display">X</div>
+                    <div class="player-score" id="score1">0</div>
+                    <div class="player-status active" id="player1-status">À jouer</div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="/script/stepManager.js"></script>
+</body>
+</html>
