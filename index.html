@@ -8,7 +8,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Step 0 – Bienvenue -->
         <div id="step-0" class="step active">
             <h1>Bienvenue sur Tic Tac Toe Dynamique !</h1>
             <p class="text-muted">
@@ -17,13 +16,13 @@
             <button id="start-btn" class="btn">Commencer</button>
         </div>
 
-        <!-- Step 1 – Joueur 1 -->
         <div id="step-1" class="step">
             <h2>Configuration Joueur 1</h2>
             
             <div class="form-group">
                 <label for="player1-name">Nom du joueur 1</label>
                 <input type="text" id="player1-name" placeholder="Entrez votre nom" maxlength="20">
+                <p id="error1" class="error"></p>
             </div>
 
             <div class="form-group">
@@ -40,13 +39,13 @@
             <button id="next-1" class="btn">Suivant</button>
         </div>
 
-        <!-- Step 2 – Joueur 2 -->
         <div id="step-2" class="step">
             <h2>Configuration Joueur 2</h2>
             
             <div class="form-group">
                 <label for="player2-name">Nom du joueur 2</label>
                 <input type="text" id="player2-name" placeholder="Entrez votre nom" maxlength="20">
+                <p id="error2" class="error"></p>
             </div>
 
             <div class="form-group">
@@ -63,7 +62,6 @@
             <button id="next-2" class="btn">Suivant</button>
         </div>
 
-        <!-- Step 3 – Paramètres -->
         <div id="step-3" class="step">
             <h2>Paramètres du jeu</h2>
             
@@ -97,9 +95,7 @@
             <button id="start-game" class="btn btn-secondary">Démarrer le jeu</button>
         </div>
 
-         <!-- Step 4 – Jeu -->
         <div id="step-4" class="step">
-            <!-- Menu Burger -->
             <div class="burger-menu">
                 <button class="burger-btn" id="burger-btn">
                     <div class="burger-line"></div>
@@ -113,9 +109,7 @@
                 </div>
             </div>
 
-            <!-- Layout principal -->
             <div class="game-layout">
-                <!-- Infos Joueur 2 (à gauche) -->
                 <div class="player-info" id="player2-info">
                     <h3 id="player2-display">Joueur 2</h3>
                     <div class="player-symbol" id="player2-symbol-display">O</div>
@@ -123,22 +117,14 @@
                     <div class="player-status inactive" id="player2-status">En attente</div>
                 </div>
 
-                <!-- Centre : Grille et infos de partie -->
                 <div class="game-center">
                     <div class="match-info">
                         Partie <span id="current-match">1</span> sur <span id="total-matches">1</span>
                     </div>
 
                     <div id="board" class="grid-3x3">
-                        <!-- Les cellules seront générées dynamiquement -->
-                    </div>
-
-                    <div class="game-message" id="game-message">
-                        Au tour de <span id="current-player-name">Joueur 1</span>
                     </div>
                 </div>
-
-                <!-- Infos Joueur 1 (à droite) -->
                 <div class="player-info" id="player1-info">
                     <h3 id="player1-display">Joueur 1</h3>
                     <div class="player-symbol" id="player1-symbol-display">X</div>
@@ -148,6 +134,7 @@
             </div>
         </div>
     </div>
-<script src="/script/stepManager.js"></script>
+    <script src="/script/stepManager.js"></script>
+    <script src="/script/menuBurger.js"></script>
 </body>
 </html>
