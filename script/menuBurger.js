@@ -1,3 +1,6 @@
+import { showStep } from './stepManager.js';
+import { initializeGame } from './game.js';
+
 
 const burgerBtn = document.getElementById('burger-btn');
 const burgerPanel = document.getElementById('burger-panel');
